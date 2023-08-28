@@ -3,8 +3,8 @@ import JobDetails from "./JobDetails";
 import JobsList from "../components/jobs/JobsList";
 import OpportunitiesPage from "./OpportunitiesPage";
 import CandidateProfilePage from "./CandidateProfilePage";
-import EmployerPage from "./EmployerPage";
+import EmployerJobPostingsPage from "./EmployerJobPostingsPage";
 import JobPostingPage from "./JobPostingPage";
 export { Login, JobDetails, JobsList, OpportunitiesPage, CandidateProfilePage,
-    EmployerPage, JobPostingPage
+    EmployerJobPostingsPage, JobPostingPage
 };

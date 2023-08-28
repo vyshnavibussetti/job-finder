@@ -69,13 +69,14 @@ interface JobDetailProps {
     created_date: string;
     company_name: string;
     job_function: string;
+    [key:string]: any;
 }
 
 const JobCard: React.FC<JobDetailProps> = (props: JobDetailProps) => {
     const { selectedSkillFilter } = useContext(JobsContext);
     const { title, salary, description, skills, currencySymbol,
         estimatedHoursPerWeek, estimatedProjectDuration, 
-        expertLevel, created_date, company_name, job_function } = props;
+        expertLevel, created_date, company_name, job_function, type } = props;
     const renderJobSubTitle = () => {
         const descriptionItems = [
             {
@@ -137,12 +138,14 @@ const JobCard: React.FC<JobDetailProps> = (props: JobDetailProps) => {
     const renderSkillsTags = () => {
         //let skillSet = skills.split(",")
         const renderColor = (skill: string) => {
-            if(selectedSkillFilter.length >= 1){
+            if(type === 'candidate_opportunity_item' && selectedSkillFilter.length >= 1){
                 if(selectedSkillFilter.includes(skill)){
                     return "success";
                 } else {
                     return "default"
                 }
+            } else {
+                return "default"
             }
         }
         return (
@@ -171,12 +174,39 @@ const JobCard: React.FC<JobDetailProps> = (props: JobDetailProps) => {
         )
     }
 
-    const renderJobActions = () => {
+    const renderJobActionsForCandidateOpportunity = () => {
         return (
             <JobActionsDivStyled>
                 <Button type='primary' onClick={handleJobConsolidatedDetailsClick}>View</Button>
             </JobActionsDivStyled>
         )
+    }
+
+    const renderJobActionsForEmployers = () => {
+        return (
+            <JobActionsDivStyled>
+                <Tag color='blue' style={{cursor: 'pointer'}}>{ props.no_of_applicants} Applicants </Tag>
+            </JobActionsDivStyled>
+        )
+    }
+
+    const handleViewApplicants = () => {
+        
+    }
+    const renderJobActions = () => {
+        if(type === 'candidate_opportunity_item'){
+            return (
+                <>
+                    {renderJobActionsForCandidateOpportunity()}
+                </>
+            )
+        } else {
+            return (
+                <>
+                    {renderJobActionsForEmployers()}
+                </>
+            )
+        }
     }
 
     const handleJobConsolidatedDetailsClick = () => {

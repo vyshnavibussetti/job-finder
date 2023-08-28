@@ -33,21 +33,15 @@ const JobPostingForm: React.FC = () => {
   const [form] = Form.useForm();
   const [fileUploadSize, setFileUploadSize] = useState(0)
   const normFile = (e: any) => {
-    console.log(e);
-
-   
     const { file } = e;
     setFileUploadSize(file.size);
-    // if(file.size > 16000){
-    //   return false;
-    // }
     return e?.fileList;
   };
 
   const onFormFinish = (formValues: any) => {
     console.log("on form finsih")
     console.log(formValues);
-
+    
 
   }
 

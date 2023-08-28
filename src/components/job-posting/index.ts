@@ -1,3 +1,3 @@
 import JobPostingForm from "./JobPostingForm";
-
-export { JobPostingForm }
+import EmployerPostedJobsList from "./EmployerPostedJobsList";
+export { JobPostingForm, EmployerPostedJobsList }

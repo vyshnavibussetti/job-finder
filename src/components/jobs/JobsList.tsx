@@ -27,55 +27,6 @@ const JobsListStyled = styled.div`
     flexDirection: column;
     row-gap: 12px;
 `
-const sampleData = [
-    {
-        id: 1,
-        title: "React Developer for developing responsive websites",
-        description: `Expert Bubble developer
-        Responsibilities:
-        -Develop and manage platform  to improve user interface
-        -Display user data in repeating groups within the application
-        -Integrate with payment gateway
-        
-        Skills Required:
-        -Strong expertise in Bubble development
-        -Familiarity with implementing repeating groups or dynamic tables for scalable data display
-        -Attention to detail and excellent problem-solving skills
-        -Strong portfolio with bubble experience`,
-        salary: 30,
-        skills: ['React', 'HTML', 'CSS', 'Javascript', 'ES6'],
-        currency: 'dollars',
-        currencySymbol: '$',
-        estimatedHoursPerWeek: '30 hours',
-        estimatedProjectDuration: '3-4 months',
-        expertLevel: 'Basic',
-        created_time: '29-01-2016'
-    },
-    {
-        id: 2,
-        title: "Angular developer",
-        description: `Expert developer in 
-        Responsibilities:
-        -Develop and manage platform  to improve user interface
-        -Display user data in repeating groups within the application
-        -Integrate with payment gateway
-        
-        Skills Required:
-        -Strong expertise in Bubble development
-        -Familiarity with implementing repeating groups or dynamic tables for scalable data display
-        -Attention to detail and excellent problem-solving skills
-        -Strong portfolio with bubble experience`,
-        salary: 30,
-        skills: ['Angular', 'HTML', 'CSS', 'Javascript'],
-        currency: 'dollars',
-        currencySymbol: '$',
-        estimatedHoursPerWeek: '30 hours',
-        estimatedProjectDuration: '3-4 months',
-        expertLevel: 'Basic',
-        created_time: '29-01-2016'
-    }
-]
-
 const jobFunctions = ['Frontend', 'Backend', 'Mobile', 'Fullstack']
 
 const JobsList: React.FC = () => {
@@ -149,7 +100,7 @@ const JobsList: React.FC = () => {
         let job_function = renderJobFunction();
         let jobDetails = { ...job, description, skills, title, job_function }
         return (
-            <JobCard key={Math.random()} {...jobDetails} />
+            <JobCard key={Math.random()} {...jobDetails} type='candidate_opportunity_item'/>
         )
     }
 
