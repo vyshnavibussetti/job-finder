@@ -1,13 +1,13 @@
 
 import React from 'react';
-import './App.css';
 import AppHeader from './components/header/AppHeader';
 import { Routes, Route } from "react-router-dom";
-import { Login, JobDetails, OpportunitiesPage, CandidateProfilePage, EmployerJobPostingsPage, JobPostingPage } from "./pages"
 import { ConfigProvider, Layout } from 'antd';
 import styled from 'styled-components';
+import RoutesConfig from "./routes/RoutesConfig";
+import CustomTheme from './theme';
 import "antd/dist/antd.min.js";
-
+import './App.css';
 const { Footer } = Layout;
 
 const LayoutStyled = styled(Layout)`
@@ -32,44 +32,21 @@ const App = () => {
   return (
     <div style={{background: "#F6F7F9"}}>
       <ConfigProvider
-        theme={{
-          token: {
-            // Seed Token
-            colorPrimary: '#1677ff',
-            borderRadius: 2,
-            //colorFillSecondary: 'teal',
-            // Alias Token
-            colorBgContainer: '#fff',
-            // colorBorderSecondary: "yellow",
-             colorLinkActive: "#45D909",
-            // colorSuccess: "black",
-            // colorSuccessBg: "cyan"
-
-          },
-          "components": {
-            "Tag": {
-              colorInfo: "#1677ff",
-              colorPrimaryHover: "rgb(49, 134, 237)"
-            }
-          }
-        }}
+        theme={CustomTheme}
       >
-
         <AppHeader />
         <LayoutStyled>
           <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/candidate/opportunities" element={<OpportunitiesPage/>} />
-            <Route path="/candidate/profile" element={<CandidateProfilePage />} />
-            <Route path='/employer/job-postings' element={<EmployerJobPostingsPage/>} />
-            <Route path="/employer/post-job" element={<JobPostingPage/>} />
-            {/* <Route path="/job-info/:jobId" element={<JobDetails/>} /> */}
+            {
+              RoutesConfig.map((route: any) => {
+                return <Route key={route} path={route.path} element={React.createElement(route.component)} />
+              })
+            }
           </Routes>
          </LayoutStyled>
       </ConfigProvider>
       <FooterStyled>
-        Copyrights reserved
+        © Copyrights reserved
       </FooterStyled>
     </div>
   );
