@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { JobCard, JobFilters } from ".";
 import { styled } from "styled-components";
-import sampleJsonData from "../../sample_data/MOCK_DATA (1).json";
+import sampleJsonData from "../../sample_data/sampleJobData";
 import { JobsContext } from "../../context/JobsProvider";
 import { Pagination, Typography } from "antd";
 import type { PaginationProps } from 'antd';
