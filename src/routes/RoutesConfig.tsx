@@ -6,35 +6,43 @@ import { Login, JobDetails, OpportunitiesPage, CandidateProfilePage,
 const RoutesConfig = [
     {
         path: '/home',
-        component: HomeScreen
+        component: HomeScreen,
+        allowed_user_roles: ['job-seeker', 'employer']
     },
     {
         path: '/',
-        component: HomeScreen
+        component: HomeScreen,
+        allowed_user_roles: ['job-seeker', 'employer']
     },
     {
         path: '/login',
-        component: Login
+        component: Login,
+        allowed_user_roles: ['job-seeker', 'employer']
     },
     {
         path: '/candidate/opportunities',
-        component: OpportunitiesPage
+        component: OpportunitiesPage,
+        allowed_user_roles: ['job-seeker']
     },
     {
         path: '/candidate/profile',
         component: CandidateProfilePage,
+        allowed_user_roles: ['job-seeker']
     },
     {
-        path: '/employer/job-postings',
-        component: EmployerJobPostingsPage
+        path: '/employer/my-job-postings',
+        component: EmployerJobPostingsPage,
+        allowed_user_roles: ['employer']
     },
     {
         path: '/employer/post-job',
-        component: JobPostingPage
+        component: JobPostingPage,
+        allowed_user_roles: ['employer']
     },
     {
         path: '*',
-        component: NotFoundPage
+        component: NotFoundPage,
+        allowed_user_roles: ['employer', 'job-seeker']
     }
 ]
 

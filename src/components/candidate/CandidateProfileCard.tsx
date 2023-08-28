@@ -26,9 +26,6 @@ const CandidateProfileCard: React.FC = () => {
 
 
     const handleFormValidationStatus = (formStatus: boolean) => {
-        console.log("form status")
-        console.log(formStatus)
-
         setIsFormValidated(formStatus);
     }
 

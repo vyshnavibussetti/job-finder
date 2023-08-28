@@ -1,8 +1,9 @@
 
-import React from 'react';
+import React, { useContext } from 'react';
 import AppHeader from './components/header/AppHeader';
 import { Routes, Route } from "react-router-dom";
 import { ConfigProvider, Layout } from 'antd';
+import { UserContext } from './context/UserProvider';
 import styled from 'styled-components';
 import RoutesConfig from "./routes/RoutesConfig";
 import CustomTheme from './theme';
@@ -19,7 +20,7 @@ const LayoutStyled = styled(Layout)`
   overflow:auto;
 `
 
-const FooterStyled =  styled(Footer)`
+const FooterStyled = styled(Footer)`
   position:absolute; 
   bottom:0px; 
   height:20px; 
@@ -29,8 +30,9 @@ const FooterStyled =  styled(Footer)`
   background-color: lightgray;
 `
 const App = () => {
+  const { loggedInUserInfo, loggedInUserRole } = useContext(UserContext);
   return (
-    <div style={{background: "#F6F7F9"}}>
+    <div style={{ background: "#F6F7F9" }}>
       <ConfigProvider
         theme={CustomTheme}
       >
@@ -43,7 +45,7 @@ const App = () => {
               })
             }
           </Routes>
-         </LayoutStyled>
+        </LayoutStyled>
       </ConfigProvider>
       <FooterStyled>
         © Copyrights reserved

@@ -57,18 +57,18 @@ const JobActionsDivStyled = styled.div`
   align-self: center;
 `
 interface JobDetailProps {
-    title: string,
+    title?: string,
     salary: number,
     description: string,
     skills: string[],
-    currency: string,
-    currencySymbol: string,
+    currency?: string,
+    currencySymbol?: string,
     estimatedHoursPerWeek: string,
     estimatedProjectDuration: string,
     expertLevel: string;
     created_date: string;
     company_name: string;
-    job_function: string;
+    job_function?: string;
     [key:string]: any;
 }
 

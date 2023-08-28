@@ -1,32 +1,33 @@
-import React, {useContext} from 'react';
-
+import React, {useContext, useEffect} from 'react';
 import { UserContext } from "./../context/UserProvider";
-import { OpportunitiesPage, EmployerJobPostingsPage, Login, 
-    CandidateProfilePage, JobPostingPage } from '.';
+import { useNavigate } from 'react-router-dom';    
 const HomeScreen : React.FC = () => {
+   useEffect(() => {
+    renderHomeScreenContent()
+   },[])
     const { isUserLoggedIn, loggedInUserRole, loggedInUserInfo } = useContext(UserContext);
-
+    const navigate = useNavigate();
     const renderHomeScreenContent = () => {
         if(isUserLoggedIn === false){
-            return <Login/>
+            navigate('/login')
         } else if(isUserLoggedIn === true){
             if(loggedInUserRole === 'job-seeker'){
                 if(loggedInUserInfo.status === 'active'){
-                    return <OpportunitiesPage />
+                    navigate('/candidate/opportunities')
                 } else {
-                    return <CandidateProfilePage />
+                    navigate('/candidate/profile')
                 }
             } else if(loggedInUserRole === 'employer'){
                 if(loggedInUserInfo.status === 'active'){
-                    return <EmployerJobPostingsPage />
+                    navigate('/employer/my-job-postings')
                 } else {
-                    return <JobPostingPage />
+                    navigate('/employer/post-job')
                 }
             }
         }
     }
     return (
-        <>{renderHomeScreenContent()}</>
+        <>HomeScreen</>
     )
 }
 export default HomeScreen;

@@ -36,8 +36,6 @@ const PostedJobsList: React.FC = () => {
         return jobFunctions[random]
     }
     const renderJobCard = (job: any) => {
-        console.log("job ")
-        console.log(job)
         const title = `${job.expertLevel} developer in ${job.skills}`
         const description = `${job.expertLevel} developer in ${job.skills}
                 Responsibilities:
