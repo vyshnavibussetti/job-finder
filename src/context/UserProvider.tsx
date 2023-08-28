@@ -14,6 +14,7 @@ export const UserProvider = (props: any) => {
                 setLoggedUserRole(newValues);
                 return 
             case "UPDATE_LOGGED_IN_USER_INFO":
+                localStorage.setItem("logged_in_user_info", newValues);
                 setLoggedInUserInfo(newValues);
                 return       
             default:

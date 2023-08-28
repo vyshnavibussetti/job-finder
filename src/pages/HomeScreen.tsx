@@ -16,7 +16,7 @@ const HomeScreen : React.FC = () => {
                 } else {
                     return <CandidateProfilePage />
                 }
-            } else if(loggedInUserInfo === 'employer'){
+            } else if(loggedInUserRole === 'employer'){
                 if(loggedInUserInfo.status === 'active'){
                     return <EmployerJobPostingsPage />
                 } else {
@@ -24,7 +24,6 @@ const HomeScreen : React.FC = () => {
                 }
             }
         }
-        
     }
     return (
         <>{renderHomeScreenContent()}</>

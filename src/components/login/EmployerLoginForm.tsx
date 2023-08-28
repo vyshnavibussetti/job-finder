@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
-
+import { SampleEmployerInfo } from '../../sample_data/UserInfo';
+import { UserContext } from '../../context/UserProvider';
+import { useNavigate } from 'react-router-dom';
 const { Item } = Form;
 
 const ButtonStyled = styled(Button)`
@@ -14,22 +16,39 @@ const InputStyled = styled(Input)`
     height: 48px;
 `
 const EmployerLoginForm: React.FC = () => {
+  const navigate = useNavigate()
   const [form] = Form.useForm();
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
+  const { dispatchUserInfoState } = useContext(UserContext);
+  const onEmployerLoginFinish = (formValues: any) => {
+    let { email, password } = formValues;
+    let loggedInUserInfo = SampleEmployerInfo.find((ele: any) => {
+       return ele.email === email && ele.password === password
+    })
+
+    if(loggedInUserInfo){
+      dispatchUserInfoState("UPDATE_USER_LOGGED_IN_STATUS", true);
+      dispatchUserInfoState("UPDATE_LOGGED_IN_USER_INFO",loggedInUserInfo);
+      dispatchUserInfoState("UPDATE_LOGGED_IN_USER_ROLE", loggedInUserInfo.role);
+      navigate('/home');
+    } else {
+      alert("Please enter valid username and password");
+      form.resetFields();
+    }
   };
+
 
   return (
       <Form
         name="normal_login"
         className="login-form"
         initialValues={{ remember: true }}
-        onFinish={onFinish}
+        onFinish={onEmployerLoginFinish}
         style={{width: "90%"}}
         layout='vertical'
+        form={form}
       >
           <Item
-          name={['user', 'email']} 
+          name={'email'} 
           required
           label="Email" 
           rules={[{ type: 'email' }]}
@@ -45,7 +64,6 @@ const EmployerLoginForm: React.FC = () => {
           <InputStyled
             prefix={<LockOutlined className="site-form-item-icon" />}
             type="password"
-            
             placeholder="Please input your password!"
           />
         </Item>

@@ -1,5 +1,7 @@
 import { Login, JobDetails, OpportunitiesPage, CandidateProfilePage, 
-    EmployerJobPostingsPage, JobPostingPage, HomeScreen } from "./../pages"
+    EmployerJobPostingsPage, JobPostingPage, HomeScreen,
+    NotFoundPage, UnauthorisedPage
+} from "./../pages"
 
 const RoutesConfig = [
     {
@@ -29,6 +31,10 @@ const RoutesConfig = [
     {
         path: '/employer/post-job',
         component: JobPostingPage
+    },
+    {
+        path: '*',
+        component: NotFoundPage
     }
 ]
 

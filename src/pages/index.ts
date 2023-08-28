@@ -6,6 +6,9 @@ import CandidateProfilePage from "./CandidateProfilePage";
 import EmployerJobPostingsPage from "./EmployerJobPostingsPage";
 import JobPostingPage from "./JobPostingPage";
 import HomeScreen from "./HomeScreen";
+import NotFoundPage from "./NotFoundPage";
+import UnauthorisedPage from "./UnauthorisedPage";
 export { Login, JobDetails, JobsList, OpportunitiesPage, CandidateProfilePage,
-    EmployerJobPostingsPage, JobPostingPage, HomeScreen
+    EmployerJobPostingsPage, JobPostingPage, HomeScreen, NotFoundPage,
+    UnauthorisedPage
 };
